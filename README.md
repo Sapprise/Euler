@@ -1,6 +1,6 @@
 # Euler
 > 欧拉计划前50题学习记录
-
+...bash
 .
 ├── p1
 ├── README.md
