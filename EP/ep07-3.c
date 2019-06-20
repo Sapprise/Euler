@@ -8,12 +8,13 @@
 #include <stdio.h>
 
 
-#define MAX_N 200000
+#define MAX_N 2000000
 int is_prime[MAX_N + 5];
 
 
 int main() {
     int cnt = 0;
+    long long sum = 0;
     for (int i = 2; i <= MAX_N; i++) {
         if (is_prime[i]){
             for (int j = 1; j <= cnt; j++) {
@@ -22,6 +23,7 @@ int main() {
                 if (i % is_prime[j] == 0) break;
             }
         }else {
+            sum += i;
             cnt += 1;
             is_prime[cnt] = i;
             for (int j = 1; j <= cnt; j++) {
@@ -32,8 +34,7 @@ int main() {
         }    
 
     }
-    printf("%d\n", is_prime[10001]);
-
+    printf("%lld\n", sum);
 
     return 0;
 }
