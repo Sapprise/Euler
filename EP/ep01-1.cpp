@@ -14,7 +14,7 @@ int is_valid(int x) {
 }
 
 int main() {
-        int sum = 0;
+    int sum = 0;
     for (int i = 1; i < 1000; i++) {
         if (is_valid(i)) {
             sum += i;
