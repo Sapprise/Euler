@@ -6,8 +6,9 @@
  ************************************************************************/
 
 #include <stdio.h>
-#include <math.h>
-
+#include <cmath>
+#include <iostream>
+using namespace std;
 #define MAX_N 100000
 int arr[MAX_N + 5];
 
