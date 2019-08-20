@@ -13,14 +13,14 @@ using namespace std;
 int main() {
     int t;
     int h = 0, m = 0, s = 0;
-    char *tr, *time;
+    char tr[10] = {0};
     cin >> t;
     if (t < 12 * 60 * 60) {
-        strcpy(tr, "am");
+        strncpy(tr, "am", 2);
     } else if (t <= 13 * 60 * 60) {
-        strcpy(tr, "midnoon");
+        strncpy(tr, "midnoon", 7);
     } else {
-        strcpy(tr, "pm");
+        strncpy(tr, "pm", 2);
     }
         h = t / (60 * 60);
         t -= h * 60 * 60;
