@@ -16,6 +16,7 @@ struct Node {
 } tree[MAX_N + 5];
 
 int root = 1, cnt = 1;
+char str[MAX_N + 5];
 int getNode() {
     return ++cnt;
 }
@@ -33,10 +34,8 @@ void insert(const char *str) {
 
 int rearch(const char *str) {
     int p = root, ans = 0;
-    for (int i = 0; str[i]; i++) {
-        int ant = str[i] - 'a';
-        if (tree[p].next[ant] == 0) break;
-        p = tree[p].next[ant];
+    for (int i = 0; str[i] && p; i++) {
+        p = tree[p].next[str[i] - 'a'];
         ans += tree[p].flag;
     }
     return ans;
@@ -46,12 +45,10 @@ int main() {
     int n, m;
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
-        char str[MAX_N + 5] ={0};
         cin >> str;
         insert(str);
     }
     for (int i = 0; i < m; i++) {
-        char str[MAX_N + 5] = {0};
         cin >> str;
         cout << rearch(str) << endl;
     }

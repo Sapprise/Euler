@@ -1,20 +1,19 @@
 /*************************************************************************
-	> File Name: 72-1.cpp
+	> File Name: 326.cpp
 	> Author: liujunming 
 	> Mail: 1292917361@qq.com 
-	> Created Time: 2019年08月21日 星期三 20时47分39秒
+	> Created Time: 2019年08月22日 星期四 15时22分15秒
  ************************************************************************/
 
 #include <iostream>
 using namespace std;
-#define MAX_N 10000
+
+#define MAX_N 50000
 
 struct UnionSet {
     int fa[MAX_N + 5], val[MAX_N + 5];
     void init(int n) {
-        for (int i = 1; i <= n; i++) {
-            fa[i] = i;
-        }
+        for (int i = 0; i <= n; i++) fa[i] = i;
     }
     int get(int x) {
         if (x == fa[x]) return x;
@@ -34,31 +33,24 @@ struct UnionSet {
 
 UnionSet u;
 
-void read(int &n, int &m) {
-    cin >> n >> m;
-    u.init(n);
-    return ;
-}
-
 int main() {
-    int n, m;
-    read(n, m);
-    for (int i = 0; i < m; i++) {
+    int n, k, ant = 0;
+    cin >> n >> k;;
+    u.init(n);
+    for (int i = 0; i < k; i++) {
         int a, b, c;
         cin >> a >> b >> c;
-        if (a == 1) {
-            u.merge(b, c ,2);
+        if (b > n || c > n) {
+            ant += 1;
+            continue;
+        }
+        if (u.get(b) != u.get(c)) {
+            u.merge(b, c, a - 1);
         } else {
-            if (u.get(b) != u.get(c)) {
-                cout << "Unknown" << endl;
-            } else {
-                switch ((u.val[b] - u.val[c] + 3) % 3) {
-                    case 0: cout << "Tie" << endl; break;
-                    case 1: cout << "Loss" << endl; break;
-                    case 2: cout << "Win" << endl;
-                }
-            }
+            if ((u.val[b] - u.val[c] + 3) % 3 == a - 1) continue;
+            ant += 1;
         }
     }
+    cout << ant << endl;
     return 0;
 }
