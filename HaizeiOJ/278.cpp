@@ -11,7 +11,7 @@ using namespace std;
 #define MAX 1000000
 char str[MAX + 5];
 int next[MAX + 5];
-int ans [MAX + 5];
+int ans[MAX + 5];
 
 void get_next(char *str, int *next) {
     int j = -1;
